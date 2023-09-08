@@ -12,6 +12,7 @@ const companyController = new CompanyController(companyService);
 route
   .get('/companies', (req, res) => companyController.read(req, res))
   .get('/company/:id', (req, res) => companyController.readOne(req, res))
+  .put('/company/:id', (req, res) => companyController.update(req, res))
   .post('/company', (req, res) => companyController.create(req, res));
 
 
