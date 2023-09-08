@@ -1,4 +1,4 @@
-import { ICompany } from '../interfaces/ICompany';
+import { CompanyZodSchema, ICompany } from '../interfaces/ICompany';
 import { IModel } from '../interfaces/IModel';
 import IService from '../interfaces/IService';
 
@@ -9,7 +9,11 @@ class CompanyService implements IService<ICompany> {
     this._company = model;
   }
   create(obj: unknown): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }> {
-    throw new Error('Method not implemented.');
+    const parsed = CompanyZodSchema.safeParse(obj);
+    if (!parsed.success) {
+      throw parsed.error;
+    }
+    return this._company.create(parsed.data);
   }
   read(): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }[] | null> {
     throw new Error('Method not implemented.');
