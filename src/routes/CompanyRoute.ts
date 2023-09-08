@@ -10,6 +10,7 @@ const companyService = new CompanyService(company);
 const companyController = new CompanyController(companyService);
 
 route
+  .get('/companies', (req, res) => companyController.read(req, res))
   .post('/company', (req, res) => companyController.create(req, res));
 
 

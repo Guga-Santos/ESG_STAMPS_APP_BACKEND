@@ -16,7 +16,9 @@ class CompanyService implements IService<ICompany> {
     return this._company.create(parsed.data);
   }
   read(): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }[] | null> {
-    throw new Error('Method not implemented.');
+    const list = this._company.read();
+    
+    return list;
   }
   readOne(_id: string): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }> {
     throw new Error('Method not implemented.');
