@@ -4,8 +4,9 @@ const companies = require('./seed.json');
 
 export default class Populate {
   public companySeed() {
+    const newCompany = new Company();
     companies.forEach((company: ICompany) => {
-      new Company().create(company);
+      newCompany.create(company);
     })
   }
 }

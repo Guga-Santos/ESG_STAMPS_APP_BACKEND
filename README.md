@@ -32,3 +32,24 @@ Apartir daqui, todos os comandos devem ser executados dentro do terminal iterati
 ------------
 ------------
 ------------
+## ROTAS:
+### COMPANY:
+
+GET /companies:
+<br>
+<img src="https://i.ibb.co/3f3tBNX/Captura-de-tela-de-2023-09-08-18-50-22.png" width="1000"/>
+<br>
+GET /company/:id :
+<br>
+<img src="https://i.ibb.co/9ZcxJ4D/Captura-de-tela-de-2023-09-08-19-29-28.png" width="1000"/>
+<br>
+POST /company :
+<img src="https://i.ibb.co/8bLCh4B/Captura-de-tela-de-2023-09-08-19-30-01.png" width="1000"/>
+<br>
+PUT /company/:id :
+<img src="https://i.ibb.co/mhKqgh1/Captura-de-tela-de-2023-09-08-19-30-15.png" width="1000"/>
+<br>
+DELETE /company/:id :
+<img src="https://i.ibb.co/gyt5k3k/Captura-de-tela-de-2023-09-08-19-43-43.png" width="1000"/>
+
+### STAMPS:
