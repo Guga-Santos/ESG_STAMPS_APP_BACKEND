@@ -7,7 +7,7 @@ const CompanyZodSchema = z.object({
   email: z.string().email(),
   sector: z.string().min(3),
   stamps: z.array(z.string()),
-  logo: z.string(),
+  logo: z.string().url(),
 })
 
 export type ICompany = z.infer<typeof CompanyZodSchema>;
