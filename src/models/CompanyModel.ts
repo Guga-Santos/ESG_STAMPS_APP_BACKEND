@@ -14,7 +14,7 @@ const companyMoongoseSchema = new Schema<ICompany>({
 
 class Company extends MongoModel<ICompany> {
   constructor(model = mongooseCreateModel('Companies', companyMoongoseSchema)) {
-    super(model)
+    super(model);
   }
 }
 
