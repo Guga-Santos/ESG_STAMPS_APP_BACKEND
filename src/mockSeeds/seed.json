@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Coca-Cola",
+    "description": "Compania de alimentos",
+    "url": "http://cocacola.com",
+    "email": "contato@coca-cola.com",
+    "sector": "Industria Alimentícia",
+    "stamps": [
+      "238128937129837189237",
+      "32412391827398123"
+    ],
+    "logo": "http://logodacoca.com/logo.png"
+  },
+  {
+    "name": "Natura",
+    "description": "Empresa de Cosméticos",
+    "url": "https://www.natura.com.br",
+    "email": "contato@natura.com",
+    "sector": "Cosméticos",
+    "stamps": [
+      "238128937129837189237",
+      "324123918273981232132"
+    ],
+    "logo": "https://www.natura.com.br/logo.png"
+  },
+  {
+    "name": "Unilever",
+    "description": "Empresa de Alimentos",
+    "url": "https://www.unilever.com.br",
+    "email": "contato@unilever.com",
+    "sector": "Alimentos",
+    "stamps": [
+      "238128937129811111237",
+      "999923918273981232132"
+    ],
+    "logo": "https://www.unilever.com.br/logo.png"
+  }
+]

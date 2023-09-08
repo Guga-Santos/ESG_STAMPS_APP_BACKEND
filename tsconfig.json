@@ -4,6 +4,7 @@
     "rootDir": ".",
     "target": "es2019",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "typeRoots": [
       "src/@types",
       "./node_modules/@types"
