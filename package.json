@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsnd src/index.ts",
-    "docker": "docker-compose up --build"
+    "docker-build": "docker-compose up --build",
+    "docker-run": "docker exec -it virtual_carrinhos sh"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "express-async-errors": "^3.1.1"
+    "express-async-errors": "^3.1.1",
+    "moongose": "^1.0.0"
   }
 }
