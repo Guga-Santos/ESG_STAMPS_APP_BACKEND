@@ -36,6 +36,6 @@ export default class CompanyController {
     const { id } = req.params;
     
     await this._service.delete(id);
-    return res.status(204).send("Successfully Deleted!")
+    return res.status(204);
   }
 }
