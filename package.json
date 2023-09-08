@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsnd src/index.ts",
     "docker-build": "docker-compose up --build",
-    "docker-run": "docker exec -it virtual_carrinhos sh"
+    "docker-run": "docker exec -it selos_app sh"
   },
   "keywords": [],
   "author": "",
