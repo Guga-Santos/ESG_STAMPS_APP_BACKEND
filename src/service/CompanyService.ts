@@ -40,7 +40,10 @@ class CompanyService implements IService<ICompany> {
   }
 
   public async delete(_id: string): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; } | null> {
-    throw new Error('Method not implemented.');
+    const deleted = await this._company.delete(_id);
+    if (!deleted) throw new Error(ErrorTypes.EntityNotFound);
+
+    return deleted;
   }
 }
 
