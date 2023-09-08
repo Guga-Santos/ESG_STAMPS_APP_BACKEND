@@ -20,3 +20,15 @@ Após isso, dentro do terminal iterativo criado, digite:
   npm install
 ```
 Apartir daqui, todos os comandos devem ser executados dentro do terminal iterativo.
+
+--------------
+--------------
+--------------
+## DB entities:
+<img src="https://i.ibb.co/BsS6npx/Captura-de-tela-de-2023-09-08-15-31-37.png"/>
+
+### Existem três entidades que NÃO se relacionam diretamente (mongoDB).
+
+------------
+------------
+------------
