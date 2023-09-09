@@ -25,11 +25,11 @@ Apartir daqui, todos os comandos devem ser executados dentro do terminal iterati
 --------------
 --------------
 ## DB entities:
-<img src="https://i.ibb.co/BsS6npx/Captura-de-tela-de-2023-09-08-15-31-37.png"/>
+<img src="https://i.ibb.co/BsS6npx/Captura-de-tela-de-2023-09-08-15-31-37.png" width="800"/>
 
 #### *Existem três entidades que NÃO se relacionam diretamente (mongoDB).
 
-<img src="https://i.ibb.co/7JVykZb/Captura-de-tela-de-2023-09-09-13-36-20.png"/>
+<img src="https://i.ibb.co/7JVykZb/Captura-de-tela-de-2023-09-09-13-36-20.png" width="800"/>
 
 #### *Coleção Users adicionada de forma independente apenas para validação de requisições.
 
