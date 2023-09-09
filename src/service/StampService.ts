@@ -1,6 +1,6 @@
 import { IModel } from "../interfaces/IModel";
 import IService from "../interfaces/IService";
-import { IStamp } from "../interfaces/IStamp";
+import { IStamp, StampZodSchema } from "../interfaces/IStamp";
 
 class StampService implements IService<IStamp> {
   private _stamp:IModel<IStamp>;
@@ -8,19 +8,28 @@ class StampService implements IService<IStamp> {
   constructor(model: IService<IStamp>) {
     this._stamp = model;
   }
-  create(obj: unknown): Promise<{ name: string; description: string; url: string; logo: string; }> {
+
+  async create(obj: unknown): Promise<{ name: string; description: string; url: string; logo: string; }> {
+    const parsed = StampZodSchema.safeParse(obj);
+    if (!parsed.success) {
+      throw parsed.error;
+    }
+    return this._stamp.create(parsed.data);
+  }
+
+  async read(): Promise<{ name: string; description: string; url: string; logo: string; }[] | null> {
     throw new Error("Method not implemented.");
   }
-  read(): Promise<{ name: string; description: string; url: string; logo: string; }[] | null> {
+
+  async readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
     throw new Error("Method not implemented.");
   }
-  readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
+
+  async update(_id: string, obj: Partial<{ name: string; description: string; url: string; logo: string; }>): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
     throw new Error("Method not implemented.");
   }
-  update(_id: string, obj: Partial<{ name: string; description: string; url: string; logo: string; }>): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
-    throw new Error("Method not implemented.");
-  }
-  delete(_id: string): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
+
+  async delete(_id: string): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
     throw new Error("Method not implemented.");
   }
 }
