@@ -146,4 +146,4 @@ DELETE /category/:id :
 - Receber token nas requisições.
 - Testes unitários
 - Testes de integração
-- Connstruir Seeds para popular banco no build.
+- Construir Seeds para popular banco no build.
