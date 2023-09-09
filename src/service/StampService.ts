@@ -33,7 +33,11 @@ class StampService implements IService<IStamp> {
   }
 
   async update(_id: string, obj: Partial<{ name: string; description: string; url: string; logo: string; }>): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
-    throw new Error("Method not implemented.");
+    const updated = await this._stamp.update(_id, obj);
+
+    if (!updated) throw new Error(ErrorTypes.EntityNotFound);
+    
+    return updated;
   }
 
   async delete(_id: string): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
