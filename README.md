@@ -59,3 +59,20 @@ DELETE /company/:id :
 <img src="https://i.ibb.co/gyt5k3k/Captura-de-tela-de-2023-09-08-19-43-43.png" width="1000"/>
 
 ### STAMPS:
+
+GET /stamps:
+<br>
+<img src="[g](https://i.ibb.co/wCjdHRj/Captura-de-tela-de-2023-09-09-13-57-17.png)" width="1000"/>
+<br>
+GET /stamp/:id :
+<br>
+<img src="" width="1000"/>
+<br>
+POST /company :
+<img src="https://i.ibb.co/b1MVC1X/Captura-de-tela-de-2023-09-09-13-53-42.png" width="1000"/>
+<br>
+PUT /stamp/:id :
+<img src="" width="1000"/>
+<br>
+DELETE /stamp/:id :
+<img src="" width="1000"/>

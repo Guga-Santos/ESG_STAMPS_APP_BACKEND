@@ -18,7 +18,7 @@ export default class StampController {
 
   public async readOne(req: Request, res: Response) {
     const { id } = req.params;
-    const stamp = this._service.readOne(id);
+    const stamp = await this._service.readOne(id);
     res.status(200).json(stamp);
   }
 

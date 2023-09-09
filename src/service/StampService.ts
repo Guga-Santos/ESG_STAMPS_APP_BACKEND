@@ -24,7 +24,7 @@ class StampService implements IService<IStamp> {
     return list;
   }
 
-  async readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
+  public async readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
     const stamp = await this._stamp.readOne(_id);
     
     if (!stamp) throw new Error(ErrorTypes.EntityNotFound);
