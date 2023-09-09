@@ -43,3 +43,5 @@ class UserService implements IService<IUser> {
     return deleted;
   }
 }
+
+export default UserService;
