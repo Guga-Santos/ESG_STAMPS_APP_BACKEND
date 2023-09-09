@@ -30,7 +30,10 @@ class CategoryService implements IService<ICategory> {
     return company;
   }
   async update(_id: string, obj: Partial<{ name: string; description: string; stamps: string[]; }>): Promise<{ name: string; description: string; stamps: string[]; } | null> {
-    throw new Error("Method not implemented.");
+    const updated = await this._category.update(_id, obj);
+    if (!updated) throw new Error(ErrorTypes.EntityNotFound);
+
+    return updated;
   }
   async delete(_id: string): Promise<{ name: string; description: string; stamps: string[]; } | null> {
     throw new Error("Method not implemented.");
