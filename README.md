@@ -71,7 +71,7 @@ GET /stamp/:id :
 <br>
 <img src="https://i.ibb.co/dpfYBzW/Captura-de-tela-de-2023-09-09-14-17-55.png" width="1000"/>
 <br>
-POST /stamp:
+POST /stamp :
 <br>
 <img src="https://i.ibb.co/b1MVC1X/Captura-de-tela-de-2023-09-09-13-53-42.png" width="1000"/>
 <br>
