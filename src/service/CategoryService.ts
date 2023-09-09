@@ -16,8 +16,10 @@ class CategoryService implements IService<ICategory> {
 
     return this._category.create(parsed.data);
   }
-  read(): Promise<{ name: string; description: string; stamps: string[]; }[] | null> {
-    throw new Error("Method not implemented.");
+  async read(): Promise<{ name: string; description: string; stamps: string[]; }[] | null> {
+    const list = await this._category.read();
+    
+    return list;
   }
   readOne(_id: string): Promise<{ name: string; description: string; stamps: string[]; }> {
     throw new Error("Method not implemented.");
