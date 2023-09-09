@@ -1,3 +1,4 @@
+import { ErrorTypes } from "../errors/catalog";
 import { CategoryZodSchema, ICategory } from "../interfaces/ICategory";
 import { IModel } from "../interfaces/IModel";
 import IService from "../interfaces/IService";
@@ -8,7 +9,7 @@ class CategoryService implements IService<ICategory> {
   constructor(model: IModel<ICategory>) {
     this._category = model;
   }
-  create(obj: unknown): Promise<{ name: string; description: string; stamps: string[]; }> {
+  async create(obj: unknown): Promise<{ name: string; description: string; stamps: string[]; }> {
     const parsed = CategoryZodSchema.safeParse(obj);
     if(!parsed.success) {
       throw parsed.error;
@@ -21,13 +22,17 @@ class CategoryService implements IService<ICategory> {
     
     return list;
   }
-  readOne(_id: string): Promise<{ name: string; description: string; stamps: string[]; }> {
+  async readOne(_id: string): Promise<{ name: string; description: string; stamps: string[]; }> {
+    const company = await this._category.readOne(_id);
+
+    if (!company) throw new Error(ErrorTypes.EntityNotFound);
+
+    return company;
+  }
+  async update(_id: string, obj: Partial<{ name: string; description: string; stamps: string[]; }>): Promise<{ name: string; description: string; stamps: string[]; } | null> {
     throw new Error("Method not implemented.");
   }
-  update(_id: string, obj: Partial<{ name: string; description: string; stamps: string[]; }>): Promise<{ name: string; description: string; stamps: string[]; } | null> {
-    throw new Error("Method not implemented.");
-  }
-  delete(_id: string): Promise<{ name: string; description: string; stamps: string[]; } | null> {
+  async delete(_id: string): Promise<{ name: string; description: string; stamps: string[]; } | null> {
     throw new Error("Method not implemented.");
   }
 }
