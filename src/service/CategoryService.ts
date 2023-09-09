@@ -42,3 +42,5 @@ class CategoryService implements IService<ICategory> {
     return deleted;
   }
 }
+
+export default CategoryService;
