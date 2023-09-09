@@ -10,7 +10,7 @@ const UsersMongooseSchema = new Schema<IUser>({
   role: String,
 }, { versionKey: false });
 
-class Users extends MongoModel<IUser> {
+class User extends MongoModel<IUser> {
   constructor(model = mongooseCreateModel('Users', UsersMongooseSchema)) {
     super(model);
   }
@@ -20,4 +20,4 @@ class Users extends MongoModel<IUser> {
   }
 }
 
-export default Users;
+export default User;
