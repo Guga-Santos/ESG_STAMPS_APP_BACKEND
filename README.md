@@ -90,7 +90,7 @@ GET /stamp/:id :
 POST /stamp :
 <br>
 <details>
-<img src="https://i.ibb.co/b1MVC1X/Captura-de-tela-de-2023-09-09-13-53-42.png" width="1000"/>
+<img src="https://i.ibb.co/RvGRNzn/Captura-de-tela-de-2023-09-09-14-59-25.png" width="1000"/>
 <br>
 </details>
 PUT /stamp/:id :
