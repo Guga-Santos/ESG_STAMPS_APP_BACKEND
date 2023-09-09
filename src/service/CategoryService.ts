@@ -36,6 +36,9 @@ class CategoryService implements IService<ICategory> {
     return updated;
   }
   async delete(_id: string): Promise<{ name: string; description: string; stamps: string[]; } | null> {
-    throw new Error("Method not implemented.");
+    const deleted = await this._category.delete(_id);
+    if (!deleted) throw new Error(ErrorTypes.EntityNotFound);
+
+    return deleted;
   }
 }
