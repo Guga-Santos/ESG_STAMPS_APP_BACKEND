@@ -1,3 +1,4 @@
+import { ErrorTypes } from "../errors/catalog";
 import { IModel } from "../interfaces/IModel";
 import IService from "../interfaces/IService";
 import { IStamp, StampZodSchema } from "../interfaces/IStamp";
@@ -24,7 +25,11 @@ class StampService implements IService<IStamp> {
   }
 
   async readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
-    throw new Error("Method not implemented.");
+    const stamp = await this._stamp.readOne(_id);
+
+    if(!stamp) throw new Error(ErrorTypes.EntityNotFound);
+
+    return stamp;
   }
 
   async update(_id: string, obj: Partial<{ name: string; description: string; url: string; logo: string; }>): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
