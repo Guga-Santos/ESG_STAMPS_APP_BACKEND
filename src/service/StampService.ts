@@ -18,7 +18,9 @@ class StampService implements IService<IStamp> {
   }
 
   async read(): Promise<{ name: string; description: string; url: string; logo: string; }[] | null> {
-    throw new Error("Method not implemented.");
+    const list = await this._stamp.read();
+    
+    return list;
   }
 
   async readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
