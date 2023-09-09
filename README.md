@@ -62,7 +62,7 @@ DELETE /company/:id :
 
 GET /stamps:
 <br>
-<img src="[g](https://i.ibb.co/wCjdHRj/Captura-de-tela-de-2023-09-09-13-57-17.png)" width="1000"/>
+<img src="https://i.ibb.co/wCjdHRj/Captura-de-tela-de-2023-09-09-13-57-17.png" width="1000"/>
 <br>
 GET /stamp/:id :
 <br>
