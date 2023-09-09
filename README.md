@@ -27,7 +27,13 @@ Apartir daqui, todos os comandos devem ser executados dentro do terminal iterati
 ## DB entities:
 <img src="https://i.ibb.co/BsS6npx/Captura-de-tela-de-2023-09-08-15-31-37.png"/>
 
-### Existem três entidades que NÃO se relacionam diretamente (mongoDB).
+#### *Existem três entidades que NÃO se relacionam diretamente (mongoDB).
+
+<img src="https://i.ibb.co/7JVykZb/Captura-de-tela-de-2023-09-09-13-36-20.png"/>
+
+#### *Coleção Users adicionada de forma independente apenas para validação de requisições.
+
+
 
 ------------
 ------------
@@ -44,10 +50,10 @@ GET /company/:id :
 <img src="https://i.ibb.co/9ZcxJ4D/Captura-de-tela-de-2023-09-08-19-29-28.png" width="1000"/>
 <br>
 POST /company :
-<img src="https://i.ibb.co/8bLCh4B/Captura-de-tela-de-2023-09-08-19-30-01.png" width="1000"/>
+<img src="https://i.ibb.co/mhKqgh1/Captura-de-tela-de-2023-09-08-19-30-15.png" width="1000"/>
 <br>
 PUT /company/:id :
-<img src="https://i.ibb.co/mhKqgh1/Captura-de-tela-de-2023-09-08-19-30-15.png" width="1000"/>
+<img src="https://i.ibb.co/8bLCh4B/Captura-de-tela-de-2023-09-08-19-30-01.png" width="1000"/>
 <br>
 DELETE /company/:id :
 <img src="https://i.ibb.co/gyt5k3k/Captura-de-tela-de-2023-09-08-19-43-43.png" width="1000"/>
