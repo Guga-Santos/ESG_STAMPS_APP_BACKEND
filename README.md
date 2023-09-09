@@ -142,8 +142,7 @@ DELETE /category/:id :
 ---------------------------------
 ----------------------------------
 ### Ainda Falta:
-- Implementar JWT para autenticação do usuário.
-- Receber token nas requisições.
+- Implementar JWT nas rotas para autenticação do usuário.
 - Testes unitários
 - Testes de integração
 - Construir Seeds para popular banco no build.
