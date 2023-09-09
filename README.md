@@ -71,11 +71,12 @@ GET /stamp/:id :
 <br>
 <img src="https://i.ibb.co/dpfYBzW/Captura-de-tela-de-2023-09-09-14-17-55.png" width="1000"/>
 <br>
-POST /company :
+POST /stamp:
 <br>
 <img src="https://i.ibb.co/b1MVC1X/Captura-de-tela-de-2023-09-09-13-53-42.png" width="1000"/>
 <br>
 PUT /stamp/:id :
+<br>
 <img src="https://i.ibb.co/kMh5hMw/Captura-de-tela-de-2023-09-09-14-14-07.png" width="1000"/>
 <br>
 DELETE /stamp/:id :
