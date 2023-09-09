@@ -10,4 +10,9 @@ export default class CategoryController {
     const newCategory = await this._service.create(body);
     return res.status(201).json(newCategory);
   }
+
+  public async read(req: Request, res: Response) {
+    const list = await this._service.read();
+    return res.status(200).json(list);
+  }
 }
