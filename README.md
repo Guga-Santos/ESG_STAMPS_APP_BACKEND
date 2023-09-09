@@ -39,48 +39,103 @@ Apartir daqui, todos os comandos devem ser executados dentro do terminal iterati
 ------------
 ------------
 ## ROTAS:
-### COMPANY:
+## COMPANY:
 
+</details>
 GET /companies:
 <br>
+<details>
 <img src="https://i.ibb.co/3f3tBNX/Captura-de-tela-de-2023-09-08-18-50-22.png" width="1000"/>
 <br>
+</details>
 GET /company/:id :
 <br>
+<details>
 <img src="https://i.ibb.co/9ZcxJ4D/Captura-de-tela-de-2023-09-08-19-29-28.png" width="1000"/>
 <br>
+</details>
 POST /company :
 <br>
+<details>
 <img src="https://i.ibb.co/mhKqgh1/Captura-de-tela-de-2023-09-08-19-30-15.png" width="1000"/>
 <br>
+</details>
 PUT /company/:id :
 <br>
+<details>
 <img src="https://i.ibb.co/8bLCh4B/Captura-de-tela-de-2023-09-08-19-30-01.png" width="1000"/>
 <br>
+</details>
 DELETE /company/:id :
 <br>
+<details>
 <img src="https://i.ibb.co/gyt5k3k/Captura-de-tela-de-2023-09-08-19-43-43.png" width="1000"/>
+<br>
+</details>
 
-### STAMPS:
-
+## STAMPS:
+</details>
 GET /stamps:
 <br>
+<details>
 <img src="https://i.ibb.co/wCjdHRj/Captura-de-tela-de-2023-09-09-13-57-17.png" width="1000"/>
 <br>
+</details>
 GET /stamp/:id :
 <br>
+<details>
 <img src="https://i.ibb.co/dpfYBzW/Captura-de-tela-de-2023-09-09-14-17-55.png" width="1000"/>
 <br>
+</details>
 POST /stamp :
 <br>
+<details>
 <img src="https://i.ibb.co/b1MVC1X/Captura-de-tela-de-2023-09-09-13-53-42.png" width="1000"/>
 <br>
+</details>
 PUT /stamp/:id :
 <br>
+<details>
 <img src="https://i.ibb.co/kMh5hMw/Captura-de-tela-de-2023-09-09-14-14-07.png" width="1000"/>
 <br>
+</details>
 DELETE /stamp/:id :
+<br>
+<details>
 <img src="https://i.ibb.co/86dFSBM/Captura-de-tela-de-2023-09-09-14-19-47.png" width="1000"/>
+<br>
+</details>
 
-### CATEGORY:
+## CATEGORY:
+</details>
+GET /categories:
+<br>
+<details>
+<img src="https://i.ibb.co/7GS4GqJ/Captura-de-tela-de-2023-09-09-14-46-34.png" width="1000"/>
+<br>
+</details>
+GET /category/:id :
+<br>
+<details>
+<img src="https://i.ibb.co/vZcgt6R/Captura-de-tela-de-2023-09-09-14-49-36.png" width="1000"/>
+<br>
+</details>
+POST /category :
+<br>
+<details>
+<img src="https://i.ibb.co/KbYBPxH/Captura-de-tela-de-2023-09-09-14-43-10.png" width="1000"/>
+<br>
+</details>
+PUT /category/:id :
+<br>
+<details>
+<img src="https://i.ibb.co/c2vxgM7/Captura-de-tela-de-2023-09-09-14-51-56.png" width="1000"/>
+<br>
+</details>
+DELETE /category/:id :
+<br>
+<details>
+<img src="https://i.ibb.co/hCT899D/Captura-de-tela-de-2023-09-09-14-54-05.png" width="1000"/>
+<br>
+</details>
 
