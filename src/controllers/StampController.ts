@@ -21,4 +21,13 @@ export default class StampController {
     const stamp = this._service.readOne(id);
     res.status(200).json(stamp);
   }
+
+  public async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const { body } = req;
+
+    const updated = await this._service.update(id, body);
+
+    return res.status(201).json(updated);
+  }
 }
