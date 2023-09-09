@@ -41,7 +41,10 @@ class StampService implements IService<IStamp> {
   }
 
   async delete(_id: string): Promise<{ name: string; description: string; url: string; logo: string; } | null> {
-    throw new Error("Method not implemented.");
+    const deleted = await this._stamp.delete(_id);
+    if (!deleted) throw new Error(ErrorTypes.EntityNotFound);
+
+    return deleted;
   }
 }
 
