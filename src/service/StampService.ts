@@ -6,7 +6,7 @@ import { IStamp, StampZodSchema } from "../interfaces/IStamp";
 class StampService implements IService<IStamp> {
   private _stamp:IModel<IStamp>;
 
-  constructor(model: IService<IStamp>) {
+  constructor(model: IModel<IStamp>) {
     this._stamp = model;
   }
 
@@ -26,8 +26,8 @@ class StampService implements IService<IStamp> {
 
   async readOne(_id: string): Promise<{ name: string; description: string; url: string; logo: string; }> {
     const stamp = await this._stamp.readOne(_id);
-
-    if(!stamp) throw new Error(ErrorTypes.EntityNotFound);
+    
+    if (!stamp) throw new Error(ErrorTypes.EntityNotFound);
 
     return stamp;
   }
