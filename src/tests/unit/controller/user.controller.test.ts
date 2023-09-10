@@ -6,7 +6,7 @@ import UserService from "../../../service/UserService";
 import { expect } from "chai";
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
-import { userMock } from "../../mocks/userMocks";
+import { userMock, userMockWithId } from "../../mocks/userMocks";
 
 describe('User Controller Suite Tests', () => {
   const userModel = new User();
@@ -18,6 +18,7 @@ describe('User Controller Suite Tests', () => {
 
   before(() => {
     sinon.stub(userService, 'create').resolves(userMock);
+    sinon.stub(userService, 'read').resolves([userMockWithId]);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -39,7 +40,12 @@ describe('User Controller Suite Tests', () => {
   })
 
   describe('Read all Users', () => {
-    it('On Success', () => {})
+    it('On Success', async() => {
+      await userController.read(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith([userMockWithId])).to.be.true;
+    })
   })
 
   describe('ReadOne User', () => {
