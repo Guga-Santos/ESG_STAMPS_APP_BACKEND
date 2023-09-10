@@ -16,6 +16,10 @@ describe('Company Service Suite Tests', () => {
     sinon.stub(companyModel, 'read')
     .onCall(0).resolves([companyMockWithId])
     .onCall(1).resolves(null);
+
+    sinon.stub(companyModel, 'readOne')
+    .onCall(0).resolves(companyMockWithId)
+    .onCall(1).resolves(null);
   })
   
   after(() => {
@@ -55,11 +59,19 @@ describe('Company Service Suite Tests', () => {
 
   describe('ReadOne Company', () => {
     it('On Success', async () => {
-
+      const oneCompany = await companyService.readOne(companyMockWithId._id);
+      expect(oneCompany).to.be.deep.equal(companyMockWithId);
     })
 
     it('On Failure', async () => {
-      
+      let error;
+      try {
+        await companyService.readOne(companyMockWithId._id);
+      } catch(err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
 
