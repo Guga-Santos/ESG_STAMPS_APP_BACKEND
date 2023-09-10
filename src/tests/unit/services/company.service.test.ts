@@ -1,3 +1,4 @@
+import { ErrorTypes } from "../../../errors/catalog";
 import Company from "../../../models/CompanyModel";
 import CompanyService from "../../../service/CompanyService";
 import { companyMock, companyMockWithId } from "../../mocks/companyMocks";
@@ -24,7 +25,15 @@ describe('Company Service Suite Tests', () => {
     })
 
     it('On Failure', async () => {
-      
+      let error;
+      try {
+        await companyService.create({});
+      } catch(err: any) {
+        error = err;
+      }
+
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.FieldsMissing);
     })
   })
 
