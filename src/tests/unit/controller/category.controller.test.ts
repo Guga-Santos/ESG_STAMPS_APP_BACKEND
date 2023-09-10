@@ -5,7 +5,7 @@ import CategoryService from "../../../service/CategoryService";
 import { expect } from 'chai';
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
-import { categoryMock, categoryMockWithId } from "../../mocks/categoryMocks";
+import { categoryMock, categoryMockWithId, updateCategory, updatedCategoryMock } from "../../mocks/categoryMocks";
 
 describe('Category Controller Suite Tests', () => {
   const category = new Category();
@@ -19,6 +19,7 @@ describe('Category Controller Suite Tests', () => {
     sinon.stub(categoryService, 'create').resolves(categoryMockWithId);
     sinon.stub(categoryService, 'read').resolves([categoryMockWithId]);
     sinon.stub(categoryService, 'readOne').resolves(categoryMockWithId);
+    sinon.stub(categoryService, 'update').resolves(updatedCategoryMock);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -59,7 +60,14 @@ describe('Category Controller Suite Tests', () => {
   })
 
   describe('Update Category', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.params = { id: categoryMockWithId._id };
+      req.body = updateCategory;
+      await categoryController.update(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(updatedCategoryMock)).to.be.true;
+    })
   })
 
   describe('Delete Category', () => {
