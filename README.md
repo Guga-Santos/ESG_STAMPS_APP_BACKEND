@@ -144,7 +144,7 @@ DELETE /category/:id :
 
 ## Tests:
 <br>
-<img src="https://i.ibb.co/SNQSnb3/Captura-de-tela-de-2023-09-10-15-11-45.png" width="600">
+<img src="https://i.ibb.co/j3h6N06/Captura-de-tela-de-2023-09-10-16-16-17.png" width="600">
 <br>
 
 ### Ainda Falta:
