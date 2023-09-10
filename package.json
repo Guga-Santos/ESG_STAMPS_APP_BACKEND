@@ -7,11 +7,12 @@
     "test:dev": "mocha -r ts-node/register src/tests/unit/**/*.test.ts --exit -t 60000",
     "test:cov": "nyc npm run test:dev",
     "dev": "tsnd src/index.ts",
+    "build": "tsc",
     "docker-build": "docker-compose up --build",
     "docker-run": "docker exec -it selos_app sh"
   },
   "keywords": [],
-  "author": "",
+  "author": "Guga",
   "license": "ISC",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
