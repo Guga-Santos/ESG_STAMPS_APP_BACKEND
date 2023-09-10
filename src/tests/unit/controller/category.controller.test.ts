@@ -18,6 +18,7 @@ describe('Category Controller Suite Tests', () => {
   before(() => {
     sinon.stub(categoryService, 'create').resolves(categoryMockWithId);
     sinon.stub(categoryService, 'read').resolves([categoryMockWithId]);
+    sinon.stub(categoryService, 'readOne').resolves(categoryMockWithId);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -44,13 +45,17 @@ describe('Category Controller Suite Tests', () => {
 
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
       expect((res.json as sinon.SinonStub).calledWith([categoryMockWithId])).to.be.true;
-
-
     })
   })
 
   describe('ReadOne Category', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.params = { id: categoryMockWithId._id };
+      await categoryController.readOne(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(categoryMockWithId)).to.be.true;
+    })
   })
 
   describe('Update Category', () => {
