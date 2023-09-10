@@ -2,8 +2,10 @@ import StampController from "../../../controllers/StampController";
 import Stamp from "../../../models/StampModel";
 import StampService from "../../../service/StampService";
 
+import { expect } from "chai";
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
+import { stampMock, stampMockWithId } from "../../mocks/stampMocks";
 
 describe('Stamp Controller Suite Tests', () => {
   const stamp = new Stamp();
@@ -14,6 +16,7 @@ describe('Stamp Controller Suite Tests', () => {
   const res = {} as Response;
 
   before(() => {
+    sinon.stub(stampService, 'create').resolves(stampMockWithId);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -25,22 +28,28 @@ describe('Stamp Controller Suite Tests', () => {
   })
 
   describe('Create a new Stamp', () => {
-    it('On Success', () => {});
+    it('On Success', async () => {
+      req.body = stampMock;
+      await stampController.create(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(stampMockWithId)).to.be.true;
+    });
   })
 
   describe('Read All Stamps', () => {
-    it('On Success', () => {});
+    it('On Success', async () => {});
   })
 
   describe('ReadOne Stamp', () => {
-    it('On Success', () => {});
+    it('On Success', async () => {});
   })
 
   describe('Update Stamp', () => {
-    it('On Success', () => {});
+    it('On Success', async () => {});
   })
 
   describe('Delete Stamp', () => {
-    it('On Success', () => {});
+    it('On Success', async () => {});
   })
 })
