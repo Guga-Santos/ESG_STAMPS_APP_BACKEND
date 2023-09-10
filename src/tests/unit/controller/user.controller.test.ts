@@ -6,7 +6,7 @@ import UserService from "../../../service/UserService";
 import { expect } from "chai";
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
-import { userMock, userMockWithId } from "../../mocks/userMocks";
+import { updateUserMock, updatedUserMock, userMock, userMockWithId } from "../../mocks/userMocks";
 
 describe('User Controller Suite Tests', () => {
   const userModel = new User();
@@ -20,6 +20,7 @@ describe('User Controller Suite Tests', () => {
     sinon.stub(userService, 'create').resolves(userMock);
     sinon.stub(userService, 'read').resolves([userMockWithId]);
     sinon.stub(userService, 'readOne').resolves(userMockWithId);
+    sinon.stub(userService, 'update').resolves(updatedUserMock);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -60,7 +61,14 @@ describe('User Controller Suite Tests', () => {
   })
 
   describe('Update User', () => {
-    it('On Success', () => {})
+    it('On Success', async () => {
+      req.params = { id: userMockWithId._id }
+      req.body = updateUserMock;
+      await userController.update(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(updatedUserMock)).to.be.true;
+    })
   })
 
   describe('Delete User', () => {
