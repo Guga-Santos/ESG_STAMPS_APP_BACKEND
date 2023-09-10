@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { ErrorTypes } from "../../../errors/catalog";
 import {
-  // updateUserMock,
+  updateUserMock,
   updatedUserMock,
   userMock,
   userMockWithId
@@ -90,11 +90,19 @@ describe('Users Service Suite Tests', () => {
 
   describe('Update User', () => {
     it('On Success', async () => {
-
+      const updatedUser = await userService.update(userMockWithId._id, updateUserMock);
+      expect(updatedUser).to.be.deep.equal(updatedUserMock);
     })
 
     it('On failure', async () => {
-      
+      let error;
+      try {
+        await userService.update(userMockWithId._id, updateUserMock);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
 
