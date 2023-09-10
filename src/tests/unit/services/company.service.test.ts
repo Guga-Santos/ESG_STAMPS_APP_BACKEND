@@ -1,7 +1,8 @@
 import Company from "../../../models/CompanyModel";
 import CompanyService from "../../../service/CompanyService";
-import { companyMockWithId } from "../../mocks/companyMocks";
+import { companyMock, companyMockWithId } from "../../mocks/companyMocks";
 
+import { expect } from 'chai';
 import * as sinon from 'sinon';
 
 describe('Company Service Suite Tests', () => {
@@ -18,7 +19,8 @@ describe('Company Service Suite Tests', () => {
 
   describe('Create Company', () => {
     it('On Success', async () => {
-
+      const newCompany = await companyService.create(companyMock);
+      expect(newCompany).to.be.deep.equal(companyMockWithId);
     })
 
     it('On Failure', async () => {
