@@ -21,6 +21,8 @@ describe('User Controller Suite Tests', () => {
     sinon.stub(userService, 'read').resolves([userMockWithId]);
     sinon.stub(userService, 'readOne').resolves(userMockWithId);
     sinon.stub(userService, 'update').resolves(updatedUserMock);
+    sinon.stub(userService, 'delete').resolves();
+    
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -72,6 +74,11 @@ describe('User Controller Suite Tests', () => {
   })
 
   describe('Delete User', () => {
-    it('On Success', () => {})
+    it('On Success', async () => {
+      req.params = { id: userMockWithId._id };
+      await userController.delete(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
+    })
   })
 })
