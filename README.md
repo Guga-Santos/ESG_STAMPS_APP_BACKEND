@@ -141,6 +141,11 @@ DELETE /category/:id :
 
 ---------------------------------
 ----------------------------------
+
+## Tests:
+<br>
+<img src="https://i.ibb.co/Zdr1dQV/Captura-de-tela-de-2023-09-10-12-08-13.png" width="600">
+<br>
 ### Ainda Falta:
 - Implementar JWT nas rotas para autenticação do usuário.
 - Testes unitários
