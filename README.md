@@ -144,11 +144,26 @@ DELETE /category/:id :
 
 ## Tests:
 <br>
-<img src="https://i.ibb.co/PNxcfLg/Captura-de-tela-de-2023-09-10-13-43-37.png" width="600">
+<img src="https://i.ibb.co/SNQSnb3/Captura-de-tela-de-2023-09-10-15-11-45.png" width="600">
 <br>
 
 ### Ainda Falta:
 - Implementar JWT nas rotas para autenticação do usuário.
+   - [x] Jwt
+   - [x] middleware
+   - [ ] Implementar na rota 
 - Testes unitários
-- Testes de integração
+   - [x] UserModel
+   - [x] UserService
+   - [x] CompanyService
+   - [x] CategoryService
+   - [ ] StampService
+   - [ ] UserController
+   - [ ] CompanyController
+   - [ ] CategoryController
+   - [ ] StampController
 - Construir Seeds para popular banco no build.
+   - [x] Company
+   - [ ] User
+   - [ ] Category
+   - [ ] Stamps
