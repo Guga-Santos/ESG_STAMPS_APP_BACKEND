@@ -7,3 +7,5 @@ const userMockWithId: IUser & { _id: string } = {
   password: "password",
   role: "user"
 }
+
+export { userMockWithId };
