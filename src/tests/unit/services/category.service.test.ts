@@ -16,6 +16,10 @@ describe('Category Service Suite Tests', () => {
     sinon.stub(categoryModel, 'read')
     .onCall(0).resolves([categoryMockWithId])
     .onCall(1).resolves(null);
+
+    sinon.stub(categoryModel, 'readOne')
+    .onCall(0).resolves(categoryMockWithId)
+    .onCall(1).resolves(null);
   })
 
   after(() => {
@@ -50,10 +54,18 @@ describe('Category Service Suite Tests', () => {
   })
   describe('ReadOne Category', () => {
     it('On Success', async () => {
-
+      const oneCategory = await categoryService.readOne(categoryMockWithId._id);
+      expect(oneCategory).to.be.deep.equal(categoryMockWithId);
     })
     it('On Failure', async () => {
-
+      let error;
+      try {
+        await categoryService.readOne(categoryMockWithId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
   describe('Update Category', () => {
