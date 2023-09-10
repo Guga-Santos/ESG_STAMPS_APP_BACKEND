@@ -20,6 +20,7 @@ describe('Stamp Controller Suite Tests', () => {
     sinon.stub(stampService, 'read').resolves([stampMockWithId]);
     sinon.stub(stampService, 'readOne').resolves(stampMockWithId);
     sinon.stub(stampService, 'update').resolves(updatedStampMock);
+    sinon.stub(stampService, 'delete').resolves();
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -73,7 +74,9 @@ describe('Stamp Controller Suite Tests', () => {
   describe('Delete Stamp', () => {
     it('On Success', async () => {
       req.params = { id: stampMockWithId._id };
+      await stampController.delete(req, res);
 
+      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
     });
   })
 })

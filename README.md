@@ -37,6 +37,20 @@ Apartir daqui, todos os comandos devem ser executados dentro do terminal iterati
 
 ------------
 ------------
+## Tecnologias utilizadas:
+Banco: 
+- MongoDB e Mongoose como ODM.
+
+API:
+- Node.JS com Typescript, com gerenciamento via Express.
+
+Validações: 
+- Zod e JWT.
+
+Testes: 
+ - Mocha, Chai e Sinon, com istanbul(nyc) como coverage.
+
+------------
 ------------
 ## ROTAS:
 ## COMPANY:
@@ -144,7 +158,7 @@ DELETE /category/:id :
 
 ## Tests:
 <br>
-<img src="https://i.ibb.co/j3h6N06/Captura-de-tela-de-2023-09-10-16-16-17.png" width="600">
+<img src="https://i.ibb.co/MDkz3PN/Captura-de-tela-de-2023-09-10-20-20-45.png" width="600">
 <br>
 
 ### Ainda Falta:
@@ -160,8 +174,8 @@ DELETE /category/:id :
    - [x] StampService
    - [x] UserController
    - [x] CompanyController
-   - [ ] CategoryController
-   - [ ] StampController
+   - [x] CategoryController
+   - [x] StampController
 - Construir Seeds para popular banco no build.
    - [x] Company
    - [ ] User
