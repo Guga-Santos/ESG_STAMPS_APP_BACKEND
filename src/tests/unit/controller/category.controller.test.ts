@@ -2,8 +2,10 @@ import CategoryController from "../../../controllers/CategoryController";
 import Category from "../../../models/CategoryModel";
 import CategoryService from "../../../service/CategoryService";
 
+import { expect } from 'chai';
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
+import { categoryMock, categoryMockWithId } from "../../mocks/categoryMocks";
 
 describe('Category Controller Suite Tests', () => {
   const category = new Category();
@@ -14,6 +16,8 @@ describe('Category Controller Suite Tests', () => {
   const res = {} as Response;
 
   before(() => {
+    sinon.stub(categoryService, 'create').resolves(categoryMockWithId);
+
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
     res.end = sinon.stub().returns(res);
@@ -24,7 +28,13 @@ describe('Category Controller Suite Tests', () => {
   })
 
   describe('Create a new Category', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.body = categoryMock;
+      await categoryController.create(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(categoryMockWithId)).to.be.true;
+    })
   })
 
   describe('Real All Categories', () => {
