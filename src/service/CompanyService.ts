@@ -13,7 +13,7 @@ class CompanyService implements IService<ICompany> {
   public async create(obj: unknown): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }> {
     const parsed = CompanyZodSchema.safeParse(obj);
     if (!parsed.success) {
-      throw parsed.error;
+      throw new Error(ErrorTypes.FieldsMissing);
     }
     return this._company.create(parsed.data);
   }
