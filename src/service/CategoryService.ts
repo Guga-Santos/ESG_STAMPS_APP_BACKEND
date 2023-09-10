@@ -12,7 +12,7 @@ class CategoryService implements IService<ICategory> {
   async create(obj: unknown): Promise<{ name: string; description: string; stamps: string[]; }> {
     const parsed = CategoryZodSchema.safeParse(obj);
     if(!parsed.success) {
-      throw parsed.error;
+      throw new Error(ErrorTypes.FieldsMissing);
     }
 
     return this._category.create(parsed.data);
