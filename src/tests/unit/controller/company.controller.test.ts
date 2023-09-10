@@ -18,6 +18,7 @@ describe('Company Controller Suite Tests', () => {
   before(() => {
     sinon.stub(companyService, 'create').resolves(companyMockWithId);
     sinon.stub(companyService, 'read').resolves([companyMockWithId]);
+    sinon.stub(companyService, 'readOne').resolves(companyMockWithId);
 
 
     res.status = sinon.stub().returns(res);
@@ -49,7 +50,13 @@ describe('Company Controller Suite Tests', () => {
   })
 
   describe('ReadOne Company', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.params = { id: companyMockWithId._id }
+      await companyController.readOne(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(companyMockWithId)).to.be.true;
+    })
   })
 
   describe('Update Company', () => {
