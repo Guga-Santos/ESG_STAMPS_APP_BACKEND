@@ -20,6 +20,7 @@ describe('Category Controller Suite Tests', () => {
     sinon.stub(categoryService, 'read').resolves([categoryMockWithId]);
     sinon.stub(categoryService, 'readOne').resolves(categoryMockWithId);
     sinon.stub(categoryService, 'update').resolves(updatedCategoryMock);
+    sinon.stub(categoryService, 'delete').resolves();
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -71,6 +72,11 @@ describe('Category Controller Suite Tests', () => {
   })
 
   describe('Delete Category', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.params = { id: categoryMockWithId._id };
+      await categoryController.delete(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
+    })
   })
 })
