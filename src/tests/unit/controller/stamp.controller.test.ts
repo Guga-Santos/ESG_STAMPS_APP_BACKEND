@@ -17,6 +17,7 @@ describe('Stamp Controller Suite Tests', () => {
 
   before(() => {
     sinon.stub(stampService, 'create').resolves(stampMockWithId);
+    sinon.stub(stampService, 'read').resolves([stampMockWithId]);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -38,7 +39,12 @@ describe('Stamp Controller Suite Tests', () => {
   })
 
   describe('Read All Stamps', () => {
-    it('On Success', async () => {});
+    it('On Success', async () => {
+      await stampController.read(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith([stampMockWithId])).to.be.true;
+    });
   })
 
   describe('ReadOne Stamp', () => {
