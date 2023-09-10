@@ -12,6 +12,10 @@ describe('Category Service Suite Tests', () => {
 
   before(() => {
     sinon.stub(categoryModel, 'create').resolves(categoryMockWithId);
+
+    sinon.stub(categoryModel, 'read')
+    .onCall(0).resolves([categoryMockWithId])
+    .onCall(1).resolves(null);
   })
 
   after(() => {
@@ -36,10 +40,12 @@ describe('Category Service Suite Tests', () => {
   })
   describe('Read All Category', () => {
     it('On Success', async () => {
-
+      const list = await categoryService.read();
+      expect(list).to.be.deep.equal([categoryMockWithId]);
     })
     it('On Failure', async () => {
-
+      const list = await categoryService.read();
+      expect(list).to.be.deep.equal(null);
     })
   })
   describe('ReadOne Category', () => {
