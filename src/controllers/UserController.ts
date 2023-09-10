@@ -18,8 +18,8 @@ export default class UserController {
 
   public async readOne(req: Request, res: Response) {
     const { id } = req.params;
-    const stamp = this._service.readOne(id);
-    res.status(200).json(stamp);
+    const user = await this._service.readOne(id);
+    res.status(200).json(user);
   }
 
   public async update(req: Request, res: Response) {
