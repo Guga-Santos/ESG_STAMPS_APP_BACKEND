@@ -18,6 +18,7 @@ describe('Stamp Controller Suite Tests', () => {
   before(() => {
     sinon.stub(stampService, 'create').resolves(stampMockWithId);
     sinon.stub(stampService, 'read').resolves([stampMockWithId]);
+    sinon.stub(stampService, 'readOne').resolves(stampMockWithId);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -48,14 +49,26 @@ describe('Stamp Controller Suite Tests', () => {
   })
 
   describe('ReadOne Stamp', () => {
-    it('On Success', async () => {});
+    it('On Success', async () => {
+      req.params = { id: stampMockWithId._id };
+      await stampController.readOne(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(stampMockWithId)).to.be.true;
+    });
   })
 
   describe('Update Stamp', () => {
-    it('On Success', async () => {});
+    it('On Success', async () => {
+      req.params = { id: stampMockWithId._id };
+
+    });
   })
 
   describe('Delete Stamp', () => {
-    it('On Success', async () => {});
+    it('On Success', async () => {
+      req.params = { id: stampMockWithId._id };
+
+    });
   })
 })
