@@ -13,7 +13,7 @@ class StampService implements IService<IStamp> {
   async create(obj: unknown): Promise<{ name: string; description: string; url: string; logo: string; }> {
     const parsed = StampZodSchema.safeParse(obj);
     if (!parsed.success) {
-      throw parsed.error;
+      throw new Error(ErrorTypes.FieldsMissing);
     }
     return this._stamp.create(parsed.data);
   }
