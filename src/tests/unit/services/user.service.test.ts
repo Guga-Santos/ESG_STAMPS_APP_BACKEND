@@ -107,12 +107,20 @@ describe('Users Service Suite Tests', () => {
   })
 
   describe('Delete User', () => {
-    it('On Success', async () => {
-
+    it('On success', async () => {
+      const user = await userService.delete(userMockWithId._id);
+      expect(user).to.be.deep.equal(userMockWithId);
     })
-
     it('On failure', async () => {
-      
+      let error;
+      try {
+      await userService.delete(userMockWithId._id);
+      } catch (err: any){
+        error = err;
+      }
+
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
 })
