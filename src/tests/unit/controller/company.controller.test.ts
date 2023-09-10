@@ -20,7 +20,7 @@ describe('Company Controller Suite Tests', () => {
     sinon.stub(companyService, 'read').resolves([companyMockWithId]);
     sinon.stub(companyService, 'readOne').resolves(companyMockWithId);
     sinon.stub(companyService, 'update').resolves(updatedCompanyMock);
-
+    sinon.stub(companyService, 'delete').resolves();
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -52,7 +52,7 @@ describe('Company Controller Suite Tests', () => {
 
   describe('ReadOne Company', () => {
     it('On Success', async () => {
-      req.params = { id: companyMockWithId._id }
+      req.params = { id: companyMockWithId._id };
       await companyController.readOne(req, res);
 
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
@@ -62,7 +62,7 @@ describe('Company Controller Suite Tests', () => {
 
   describe('Update Company', () => {
     it('On Success', async () => {
-      req.params = { id: companyMockWithId._id }
+      req.params = { id: companyMockWithId._id };
       req.body = updateCompanyMock;
       await companyController.update(req, res);
 
@@ -72,6 +72,11 @@ describe('Company Controller Suite Tests', () => {
   })
 
   describe('Delete Company', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.params = { id: companyMockWithId._id };
+      await companyController.delete(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
+    })
   })
 })

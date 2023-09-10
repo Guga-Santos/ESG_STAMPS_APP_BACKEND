@@ -159,7 +159,7 @@ DELETE /category/:id :
    - [x] CategoryService
    - [x] StampService
    - [x] UserController
-   - [ ] CompanyController
+   - [x] CompanyController
    - [ ] CategoryController
    - [ ] StampController
 - Construir Seeds para popular banco no build.
