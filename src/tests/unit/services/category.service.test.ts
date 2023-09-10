@@ -24,6 +24,10 @@ describe('Category Service Suite Tests', () => {
     sinon.stub(categoryModel, 'update')
     .onCall(0).resolves(updatedCategoryMock)
     .onCall(1).resolves(null);
+
+    sinon.stub(categoryModel, 'delete')
+    .onCall(0).resolves(categoryMockWithId)
+    .onCall(1).resolves(null);
   })
 
   after(() => {
@@ -90,10 +94,18 @@ describe('Category Service Suite Tests', () => {
   })
   describe('Delete Category', () => {
     it('On Success', async () => {
-
+      const deleted = await categoryService.delete(categoryMockWithId._id);
+      expect(deleted).to.be.deep.equal(categoryMockWithId);
     })
     it('On Failure', async () => {
-
+      let error;
+      try {
+        await categoryService.delete(categoryMockWithId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
 
