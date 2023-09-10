@@ -2,8 +2,10 @@ import CompanyController from "../../../controllers/CompanyController";
 import Company from "../../../models/CompanyModel";
 import CompanyService from "../../../service/CompanyService";
 
+import { expect } from "chai";
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
+import { companyMock, companyMockWithId } from "../../mocks/companyMocks";
 
 describe('Company Controller Suite Tests', () => {
   const company = new Company();
@@ -14,6 +16,8 @@ describe('Company Controller Suite Tests', () => {
   const res = {} as Response;
 
   before(() => {
+    sinon.stub(companyService, 'create').resolves(companyMockWithId);
+
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
     res.end = sinon.stub().returns(res);
@@ -24,7 +28,13 @@ describe('Company Controller Suite Tests', () => {
   })
 
   describe('Create a new Company', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.body = companyMock;
+      await companyController.create(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(companyMockWithId)).to.be.true;
+    })
   })
 
   describe('Read All Companies', () => {
