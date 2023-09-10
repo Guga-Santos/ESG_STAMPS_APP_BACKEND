@@ -5,7 +5,7 @@ import CompanyService from "../../../service/CompanyService";
 import { expect } from "chai";
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
-import { companyMock, companyMockWithId } from "../../mocks/companyMocks";
+import { companyMock, companyMockWithId, updateCompanyMock, updatedCompanyMock } from "../../mocks/companyMocks";
 
 describe('Company Controller Suite Tests', () => {
   const company = new Company();
@@ -19,6 +19,7 @@ describe('Company Controller Suite Tests', () => {
     sinon.stub(companyService, 'create').resolves(companyMockWithId);
     sinon.stub(companyService, 'read').resolves([companyMockWithId]);
     sinon.stub(companyService, 'readOne').resolves(companyMockWithId);
+    sinon.stub(companyService, 'update').resolves(updatedCompanyMock);
 
 
     res.status = sinon.stub().returns(res);
@@ -60,7 +61,14 @@ describe('Company Controller Suite Tests', () => {
   })
 
   describe('Update Company', () => {
-    it('On Success', async () => {})
+    it('On Success', async () => {
+      req.params = { id: companyMockWithId._id }
+      req.body = updateCompanyMock;
+      await companyController.update(req, res);
+
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(updatedCompanyMock)).to.be.true;
+    })
   })
 
   describe('Delete Company', () => {
