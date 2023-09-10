@@ -12,6 +12,10 @@ describe('Stamp Service Suite Tests', () => {
 
   before(() => {
     sinon.stub(stampModel, 'create').resolves(stampMockWithId);
+
+    sinon.stub(stampModel, 'read')
+    .onCall(0).resolves([stampMockWithId])
+    .onCall(1).resolves(null);
   });
 
   after(() => {
@@ -36,8 +40,14 @@ describe('Stamp Service Suite Tests', () => {
   })
 
   describe('', () => {
-    it('On Success', async () => {})
-    it('On Failure', async () => {})
+    it('On Success', async () => {
+      const list = await stampService.read();
+      expect(list).to.be.deep.equal([stampMockWithId]);
+    })
+    it('On Failure', async () => {
+      const list = await stampService.read();
+      expect(list).to.be.deep.equal(null);
+    })
   })
 
   describe('', () => {
