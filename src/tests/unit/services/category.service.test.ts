@@ -4,7 +4,7 @@ import CategoryService from "../../../service/CategoryService";
 import { expect } from "chai";
 import * as sinon from 'sinon';
 import { ErrorTypes } from "../../../errors/catalog";
-import { categoryMock, categoryMockWithId } from "../../mocks/categoryMocks";
+import { categoryMock, categoryMockWithId, updateCategory, updatedCategoryMock } from "../../mocks/categoryMocks";
 
 describe('Category Service Suite Tests', () => {
   const categoryModel = new Category();
@@ -19,6 +19,10 @@ describe('Category Service Suite Tests', () => {
 
     sinon.stub(categoryModel, 'readOne')
     .onCall(0).resolves(categoryMockWithId)
+    .onCall(1).resolves(null);
+
+    sinon.stub(categoryModel, 'update')
+    .onCall(0).resolves(updatedCategoryMock)
     .onCall(1).resolves(null);
   })
 
@@ -70,10 +74,18 @@ describe('Category Service Suite Tests', () => {
   })
   describe('Update Category', () => {
     it('On Success', async () => {
-
+      const updated = await categoryService.update(categoryMockWithId._id, updateCategory);
+      expect(updated).to.be.deep.equal(updatedCategoryMock);
     })
     it('On Failure', async () => {
-
+      let error;
+      try {
+        await categoryService.update(categoryMockWithId._id, updateCategory);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
   describe('Delete Category', () => {
