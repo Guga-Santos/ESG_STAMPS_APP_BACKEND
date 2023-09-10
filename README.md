@@ -157,7 +157,7 @@ DELETE /category/:id :
    - [x] UserService
    - [x] CompanyService
    - [x] CategoryService
-   - [ ] StampService
+   - [x] StampService
    - [ ] UserController
    - [ ] CompanyController
    - [ ] CategoryController

@@ -24,6 +24,10 @@ describe('Stamp Service Suite Tests', () => {
     sinon.stub(stampModel, 'update')
     .onCall(0).resolves(updatedStampMock)
     .onCall(1).resolves(null);
+
+    sinon.stub(stampModel, 'delete')
+    .onCall(0).resolves(stampMockWithId)
+    .onCall(1).resolves(null);
   });
 
   after(() => {
@@ -92,8 +96,20 @@ describe('Stamp Service Suite Tests', () => {
     })
   })
 
-  describe('', () => {
-    it('On Success', async () => {})
-    it('On Failure', async () => {})
+  describe('Delete Stamp', () => {
+    it('On Success', async () => {
+      const deleted = await stampService.delete(stampMockWithId._id);
+      expect(deleted).to.be.deep.equal(stampMockWithId);
+    })
+    it('On Failure', async () => {
+      let error;
+      try {
+        await stampService.delete(stampMockWithId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'Error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
+    })
   })
 })
