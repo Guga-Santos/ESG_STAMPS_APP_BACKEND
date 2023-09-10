@@ -39,5 +39,12 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.0",
     "zod": "^3.22.2"
+  },
+  "nyc": {
+    "exclude": [
+      "src/models/MongoModel.ts",
+      "src/tests",
+      "src/middlewares"
+    ]
   }
 }

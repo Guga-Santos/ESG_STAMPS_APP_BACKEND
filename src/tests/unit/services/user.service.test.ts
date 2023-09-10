@@ -71,11 +71,20 @@ describe('Users Service Suite Tests', () => {
 
   describe('ReadOne User', () => {
     it('On Success', async () => {
-
+      const oneUser = await userService.readOne(userMockWithId._id);
+      expect(oneUser).to.be.deep.equal(userMockWithId);
     })
 
     it('On failure', async () => {
-      
+      let error;
+      try {
+      await userService.readOne(userMockWithId._id);
+      } catch (err: any){
+        error = err;
+      }
+
+      expect(error, 'error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
     })
   })
 
