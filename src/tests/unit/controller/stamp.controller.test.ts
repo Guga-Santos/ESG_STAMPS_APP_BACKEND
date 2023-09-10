@@ -5,7 +5,7 @@ import StampService from "../../../service/StampService";
 import { expect } from "chai";
 import { Request, Response } from "express";
 import * as sinon from 'sinon';
-import { stampMock, stampMockWithId } from "../../mocks/stampMocks";
+import { stampMock, stampMockWithId, updateStamp, updatedStampMock } from "../../mocks/stampMocks";
 
 describe('Stamp Controller Suite Tests', () => {
   const stamp = new Stamp();
@@ -19,6 +19,7 @@ describe('Stamp Controller Suite Tests', () => {
     sinon.stub(stampService, 'create').resolves(stampMockWithId);
     sinon.stub(stampService, 'read').resolves([stampMockWithId]);
     sinon.stub(stampService, 'readOne').resolves(stampMockWithId);
+    sinon.stub(stampService, 'update').resolves(updatedStampMock);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -61,7 +62,11 @@ describe('Stamp Controller Suite Tests', () => {
   describe('Update Stamp', () => {
     it('On Success', async () => {
       req.params = { id: stampMockWithId._id };
+      req.body = updateStamp;
+      await stampController.update(req, res);
 
+      expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(updatedStampMock)).to.be.true;
     });
   })
 
