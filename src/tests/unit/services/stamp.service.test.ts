@@ -4,7 +4,7 @@ import StampService from "../../../service/StampService";
 import { expect } from "chai";
 import * as sinon from 'sinon';
 import { ErrorTypes } from "../../../errors/catalog";
-import { stampMock, stampMockWithId } from "../../mocks/stampMocks";
+import { stampMock, stampMockWithId, updateStamp, updatedStampMock } from "../../mocks/stampMocks";
 
 describe('Stamp Service Suite Tests', () => {
   const stampModel = new Stamp();
@@ -15,6 +15,14 @@ describe('Stamp Service Suite Tests', () => {
 
     sinon.stub(stampModel, 'read')
     .onCall(0).resolves([stampMockWithId])
+    .onCall(1).resolves(null);
+
+    sinon.stub(stampModel, 'readOne')
+    .onCall(0).resolves(stampMockWithId)
+    .onCall(1).resolves(null);
+
+    sinon.stub(stampModel, 'update')
+    .onCall(0).resolves(updatedStampMock)
     .onCall(1).resolves(null);
   });
 
@@ -39,7 +47,7 @@ describe('Stamp Service Suite Tests', () => {
     })
   })
 
-  describe('', () => {
+  describe('Read All Stamps', () => {
     it('On Success', async () => {
       const list = await stampService.read();
       expect(list).to.be.deep.equal([stampMockWithId]);
@@ -50,14 +58,38 @@ describe('Stamp Service Suite Tests', () => {
     })
   })
 
-  describe('', () => {
-    it('On Success', async () => {})
-    it('On Failure', async () => {})
+  describe('ReadOne Stamp', () => {
+    it('On Success', async () => {
+      const oneStamp = await stampService.readOne(stampMockWithId._id);
+      expect(oneStamp).to.be.deep.equal(stampMockWithId);
+    })
+    it('On Failure', async () => {
+      let error;
+      try {
+        await stampService.readOne(stampMockWithId._id);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'Error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
+    })
   })
 
-  describe('', () => {
-    it('On Success', async () => {})
-    it('On Failure', async () => {})
+  describe('Update Stamp', () => {
+    it('On Success', async () => {
+      const updated = await stampService.update(stampMockWithId._id, updateStamp);
+      expect(updated).to.be.deep.equal(updatedStampMock);
+    })
+    it('On Failure', async () => {
+      let error;
+      try {
+        await stampService.update(stampMockWithId._id, updateStamp);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error, 'Error should be defined').not.to.be.undefined;
+      expect(error.message).to.be.deep.equal(ErrorTypes.EntityNotFound);
+    })
   })
 
   describe('', () => {
