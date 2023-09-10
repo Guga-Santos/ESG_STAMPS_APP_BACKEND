@@ -56,4 +56,46 @@ describe('Users Service Suite Tests', () => {
       expect(error.message).to.be.deep.equal(ErrorTypes.FieldsMissing);
     })
   })
+
+  describe('Read All Users', () => {
+    it('On Success', async () => {
+      const list = await userService.read();
+      expect(list).to.be.deep.equal([userMockWithId]);
+    })
+
+    it('On failure', async () => {
+      const list = await userService.read();
+      expect(list).to.be.deep.equal(null);
+    })
+  })
+
+  describe('ReadOne User', () => {
+    it('On Success', async () => {
+
+    })
+
+    it('On failure', async () => {
+      
+    })
+  })
+
+  describe('Update User', () => {
+    it('On Success', async () => {
+
+    })
+
+    it('On failure', async () => {
+      
+    })
+  })
+
+  describe('Delete User', () => {
+    it('On Success', async () => {
+
+    })
+
+    it('On failure', async () => {
+      
+    })
+  })
 })
