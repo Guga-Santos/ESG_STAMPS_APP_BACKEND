@@ -12,6 +12,10 @@ describe('Company Service Suite Tests', () => {
 
   before(() => {
     sinon.stub(companyModel, 'create').resolves(companyMockWithId);
+
+    sinon.stub(companyModel, 'read')
+    .onCall(0).resolves([companyMockWithId])
+    .onCall(1).resolves(null);
   })
   
   after(() => {
@@ -39,11 +43,13 @@ describe('Company Service Suite Tests', () => {
 
   describe('Read All Company', () => {
     it('On Success', async () => {
-
+      const list = await companyService.read();
+      expect(list).to.be.deep.equal([companyMockWithId]);
     })
 
     it('On Failure', async () => {
-      
+      const list = await companyService.read();
+      expect(list).to.be.deep.equal(null);
     })
   })
 
