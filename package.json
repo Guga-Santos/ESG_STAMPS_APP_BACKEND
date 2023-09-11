@@ -1,7 +1,10 @@
 {
   "name": "selos_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A stamp app",
+  "engines": {
+    "node": "18.15.0"
+  },
   "main": "index.js",
   "scripts": {
     "test:dev": "mocha -r ts-node/register src/tests/unit/**/*.test.ts --exit -t 60000",
