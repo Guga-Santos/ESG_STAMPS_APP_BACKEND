@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+require("express-async-errors");
+const error_1 = __importDefault(require("./middlewares/error"));
+const CategoryRoute_1 = __importDefault(require("./routes/CategoryRoute"));
+const CompanyRoute_1 = __importDefault(require("./routes/CompanyRoute"));
+const StampRoute_1 = __importDefault(require("./routes/StampRoute"));
+const UserRoute_1 = __importDefault(require("./routes/UserRoute"));
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use(CompanyRoute_1.default);
+app.use(CategoryRoute_1.default);
+app.use(StampRoute_1.default);
+app.use(UserRoute_1.default);
+app.use(error_1.default);
+exports.default = app;
