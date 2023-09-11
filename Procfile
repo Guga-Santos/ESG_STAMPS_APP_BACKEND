@@ -1,1 +1,1 @@
-worker: npm start
+worker: npm run docker-build && npm run docker-run && npm start
