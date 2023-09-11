@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import app from './app';
 import connectToDatabase from './models/connection';
 // import Populate from './seeds/populate';
