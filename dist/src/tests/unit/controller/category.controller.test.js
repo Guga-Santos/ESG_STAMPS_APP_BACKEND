@@ -29,7 +29,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const CategoryController_1 = __importDefault(require("../../../controllers/CategoryController"));
 const CategoryModel_1 = __importDefault(require("../../../models/CategoryModel"));
 const CategoryService_1 = __importDefault(require("../../../service/CategoryService"));
+const chai_1 = require("chai");
 const sinon = __importStar(require("sinon"));
+const categoryMocks_1 = require("../../mocks/categoryMocks");
 describe('Category Controller Suite Tests', () => {
     const category = new CategoryModel_1.default();
     const categoryService = new CategoryService_1.default(category);
@@ -37,6 +39,11 @@ describe('Category Controller Suite Tests', () => {
     const req = {};
     const res = {};
     before(() => {
+        sinon.stub(categoryService, 'create').resolves(categoryMocks_1.categoryMockWithId);
+        sinon.stub(categoryService, 'read').resolves([categoryMocks_1.categoryMockWithId]);
+        sinon.stub(categoryService, 'readOne').resolves(categoryMocks_1.categoryMockWithId);
+        sinon.stub(categoryService, 'update').resolves(categoryMocks_1.updatedCategoryMock);
+        sinon.stub(categoryService, 'delete').resolves();
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns(res);
         res.end = sinon.stub().returns(res);
@@ -45,18 +52,42 @@ describe('Category Controller Suite Tests', () => {
         sinon.restore();
     });
     describe('Create a new Category', () => {
-        it('On Success', async () => { });
+        it('On Success', async () => {
+            req.body = categoryMocks_1.categoryMock;
+            await categoryController.create(req, res);
+            (0, chai_1.expect)(res.status.calledWith(201)).to.be.true;
+            (0, chai_1.expect)(res.json.calledWith(categoryMocks_1.categoryMockWithId)).to.be.true;
+        });
     });
     describe('Real All Categories', () => {
-        it('On Success', async () => { });
+        it('On Success', async () => {
+            await categoryController.read(req, res);
+            (0, chai_1.expect)(res.status.calledWith(200)).to.be.true;
+            (0, chai_1.expect)(res.json.calledWith([categoryMocks_1.categoryMockWithId])).to.be.true;
+        });
     });
     describe('ReadOne Category', () => {
-        it('On Success', async () => { });
+        it('On Success', async () => {
+            req.params = { id: categoryMocks_1.categoryMockWithId._id };
+            await categoryController.readOne(req, res);
+            (0, chai_1.expect)(res.status.calledWith(200)).to.be.true;
+            (0, chai_1.expect)(res.json.calledWith(categoryMocks_1.categoryMockWithId)).to.be.true;
+        });
     });
     describe('Update Category', () => {
-        it('On Success', async () => { });
+        it('On Success', async () => {
+            req.params = { id: categoryMocks_1.categoryMockWithId._id };
+            req.body = categoryMocks_1.updateCategory;
+            await categoryController.update(req, res);
+            (0, chai_1.expect)(res.status.calledWith(201)).to.be.true;
+            (0, chai_1.expect)(res.json.calledWith(categoryMocks_1.updatedCategoryMock)).to.be.true;
+        });
     });
     describe('Delete Category', () => {
-        it('On Success', async () => { });
+        it('On Success', async () => {
+            req.params = { id: categoryMocks_1.categoryMockWithId._id };
+            await categoryController.delete(req, res);
+            (0, chai_1.expect)(res.status.calledWith(204)).to.be.true;
+        });
     });
 });

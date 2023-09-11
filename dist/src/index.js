@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
 const app_1 = __importDefault(require("./app"));
 const connection_1 = __importDefault(require("./models/connection"));
-const populate_1 = __importDefault(require("./seeds/populate"));
+// import Populate from './seeds/populate';
 const PORT = process.env.PORT || 3001;
 (0, connection_1.default)()
     .then(() => {
-    const populate = new populate_1.default();
-    populate.companySeed();
+    // const populate = new Populate();
+    // populate.companySeed();
     app_1.default.listen(PORT, () => console.log(`Running server on port: ${PORT}`));
 })
     .catch((error) => {

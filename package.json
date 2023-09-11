@@ -8,6 +8,7 @@
     "test:cov": "nyc npm run test:dev",
     "dev": "tsnd src/index.ts",
     "build": "tsc",
+    "start": "node dist/src/index.js",
     "docker-build": "docker-compose up --build",
     "docker-run": "docker exec -it selos_app sh"
   },

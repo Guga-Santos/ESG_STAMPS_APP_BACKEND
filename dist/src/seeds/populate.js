@@ -1,24 +1,20 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const CategoryModel_1 = __importDefault(require("../models/CategoryModel"));
-const CompanyModel_1 = __importDefault(require("../models/CompanyModel"));
-const StampModel_1 = __importDefault(require("../models/StampModel"));
-const companies = require('./companies.json');
-class Populate {
-    companySeed() {
-        const newCompany = new CompanyModel_1.default();
-        companies.forEach((company) => {
-            newCompany.create(company);
-        });
-    }
-    categorySeed() {
-        const newCategory = new CategoryModel_1.default();
-    }
-    StampSeed() {
-        const newStamp = new StampModel_1.default();
-    }
-}
-exports.default = Populate;
+// import { ICompany } from "../interfaces/ICompany";
+// import Category from "../models/CategoryModel";
+// import Company from "../models/CompanyModel";
+// import Stamp from "../models/StampModel";
+// const companies = require('./companies.json');
+// export default class Populate {
+//   public companySeed() {
+//     const newCompany = new Company();
+//     companies.forEach((company: ICompany) => {
+//       newCompany.create(company);
+//     })
+//   }
+//   public categorySeed() {
+//     const newCategory = new Category();
+//   }
+//   public StampSeed() {
+//     const newStamp = new Stamp();
+//   }
+// }
