@@ -8,6 +8,7 @@ const companyMock: ICompany = {
   sector: "Example",
   stamps: ["000000000000000000000000","999999999999999999999999"],
   logo: "http://www.example.com.br/logo.png",
+  data: "http://exampleRelatorio.com.br"
 }
 
 const companyMockWithId: ICompany & { _id: string } = {
@@ -19,6 +20,8 @@ const companyMockWithId: ICompany & { _id: string } = {
   sector: "Example",
   stamps: ["000000000000000000000000","999999999999999999999999"],
   logo: "http://www.example.com.br/logo.png",
+  data: "http://exampleRelatorio.com.br"
+  
 }
 
 const updateCompanyMock = {
@@ -35,6 +38,8 @@ const updatedCompanyMock: ICompany & { _id: string } = {
   sector: "Example",
   stamps: ["000000000000000000000000","999999999999999999999999"],
   logo: "http://www.example.com.br/logo.png",
+  data: "http://exampleRelatorio.com.br"
+
 }
 
 export {
