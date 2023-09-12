@@ -8,6 +8,7 @@ const CompanyZodSchema = z.object({
   sector: z.string().min(3),
   stamps: z.array(z.string()),
   logo: z.string().url(),
+  data: z.string().url(),
 })
 
 export type ICompany = z.infer<typeof CompanyZodSchema>;

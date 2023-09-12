@@ -9,7 +9,8 @@ const companyMoongoseSchema = new Schema<ICompany>({
   email: String,
   sector: String,
   stamps: [String],
-  logo: String
+  logo: String,
+  data: String,
 }, { versionKey: false });
 
 class Company extends MongoModel<ICompany> {
