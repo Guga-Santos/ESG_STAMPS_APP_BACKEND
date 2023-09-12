@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import 'express-async-errors';
 import errorHandler from './middlewares/error';
@@ -7,6 +8,7 @@ import StampRoute from './routes/StampRoute';
 import UserRoute from './routes/UserRoute';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(CompanyRoute);
 app.use(CategoryRoute);
@@ -15,3 +17,4 @@ app.use(UserRoute);
 app.use(errorHandler);
 
 export default app;
+

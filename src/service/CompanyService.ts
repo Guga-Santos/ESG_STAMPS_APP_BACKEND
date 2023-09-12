@@ -10,7 +10,7 @@ class CompanyService implements IService<ICompany> {
     this._company = model;
   }
 
-  public async create(obj: unknown): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }> {
+  public async create(obj: unknown): Promise<ICompany> {
     const parsed = CompanyZodSchema.safeParse(obj);
     if (!parsed.success) {
       throw new Error(ErrorTypes.FieldsMissing);
@@ -18,13 +18,13 @@ class CompanyService implements IService<ICompany> {
     return this._company.create(parsed.data);
   }
 
-  public async read(): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }[] | null> {
+  public async read(): Promise<ICompany[] | null> {
     const list = await this._company.read();
     
     return list;
   }
 
-  public async readOne(_id: string): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }> {
+  public async readOne(_id: string): Promise<ICompany> {
     const company = await this._company.readOne(_id);
 
     if (!company) throw new Error(ErrorTypes.EntityNotFound);
@@ -32,14 +32,14 @@ class CompanyService implements IService<ICompany> {
     return company;
   }
 
-  public async update(_id: string, obj: Partial<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; }>): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; } | null> {
+  public async update(_id: string, obj: Partial<ICompany>): Promise<ICompany | null> {
     const updated = await this._company.update(_id, obj);
     if (!updated) throw new Error(ErrorTypes.EntityNotFound);
 
     return updated;
   }
 
-  public async delete(_id: string): Promise<{ name: string; description: string; url: string; email: string; sector: string; stamps: string[]; logo: string; } | null> {
+  public async delete(_id: string): Promise<ICompany | null> {
     const deleted = await this._company.delete(_id);
     if (!deleted) throw new Error(ErrorTypes.EntityNotFound);
 
